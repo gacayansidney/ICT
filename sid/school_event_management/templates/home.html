@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Upcoming Events</h2>
+<ul>
+    {% for event in events %}
+    <li>
+        <a href="{{ url_for('event_details', event_id=loop.index0) }}">{{ event.name }}</a> on {{ event.date }}
+        {% if event.image %}
+        <img src="{{ url_for('static', filename='uploads/' ~ event.image) }}" alt="{{ event.name }}" style="width:100px;height:auto;">
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
